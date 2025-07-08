@@ -1,8 +1,8 @@
-package GenericTree;
+package BinaryTree;
 
 public class Main {
     public static void main(String[] args) {
-        GenericTree tree = new GenericTree();
+        BinaryTree tree = new BinaryTree();
         tree.display();
     }
 }
