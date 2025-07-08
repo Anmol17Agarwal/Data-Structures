@@ -8,5 +8,6 @@ public class Main {
         tree.preOrder();
         tree.postOrder();
         tree.inOrder();
+        tree.levelOrder();
     }
 }
