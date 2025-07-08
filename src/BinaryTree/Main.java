@@ -5,5 +5,8 @@ public class Main {
         BinaryTree tree = new BinaryTree();
         tree.display();
         System.out.println("Height of tree is "+tree.height());
+        tree.preOrder();
+        tree.postOrder();
+        tree.inOrder();
     }
 }

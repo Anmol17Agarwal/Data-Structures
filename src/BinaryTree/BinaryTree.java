@@ -76,9 +76,9 @@ public class BinaryTree {
     }
 
     public int height(){
-        this.height(this.root);
+     return this.height(this.root);
     }
-    public int height(Node node){
+    private int height(Node node){
         if(node == null){
             return -1;
         }
@@ -86,5 +86,44 @@ public class BinaryTree {
         int rheight = this.height(node.right);
         int height = Math.max(lheight,rheight)+1;
         return height;
+    }
+
+    public void preOrder(){
+        this.preOrder(this.root);
+        System.out.print("END");
+    }
+    private void preOrder(Node node){
+        if(node == null){
+            return;
+        }
+        System.out.print(node.data+", ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    public void postOrder(){
+        this.postOrder(this.root);
+        System.out.print("END");
+    }
+    private void postOrder(Node node){
+        if(node == null){
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.data+", ");
+    }
+
+    public void inOrder(){
+        this.inOrder(this.root);
+        System.out.print("END");
+    }
+    private void inOrder(Node node){
+        if(node == null){
+            return;
+        }
+        inOrder(node.left);
+        System.out.print(node.data+", ");
+        inOrder(node.right);
     }
 }
