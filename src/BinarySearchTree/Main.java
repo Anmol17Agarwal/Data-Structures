@@ -9,5 +9,6 @@ public class Main {
         System.out.println(bst.find(44));
         bst.add(44);
         System.out.println(bst.find(44));
+        System.out.println(bst.max());
     }
 }

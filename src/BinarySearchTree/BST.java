@@ -86,4 +86,14 @@ public class BST {
             }
         }
     }
+
+    public int max(){
+        return max(root);
+    }
+    private int max(Node node){
+        if(node.right==null){
+            return node.data;
+        }
+        return max(node.right);
+    }
 }
