@@ -6,5 +6,6 @@ public class Main {
         int[] arr = {10,20,30,40,50,60,70};
         BST bst = new BST(arr);
         bst.display();
+        System.out.println(bst.find(44));
     }
 }

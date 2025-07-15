@@ -49,4 +49,20 @@ public class BST {
         display(node.left);
         display(node.right);
     }
+
+    public boolean find(int key){
+        return find(root,key);
+    }
+    private boolean find(Node node,int key){
+        if(node==null){
+            return false;
+        }
+        if(node.data==key){
+            return true;
+        }
+        if(node.data>key){
+            return find(node.left,key);
+        }
+        return find(node.right,key);
+    }
 }
