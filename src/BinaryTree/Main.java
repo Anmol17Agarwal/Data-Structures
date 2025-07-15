@@ -9,5 +9,6 @@ public class Main {
         tree.postOrder();
         tree.inOrder();
         tree.levelOrder();
+        System.out.println(tree.isBST());
     }
 }

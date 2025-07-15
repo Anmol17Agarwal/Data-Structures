@@ -142,4 +142,20 @@ public class BinaryTree {
         }
         System.out.print("END");
     }
+
+    public boolean isBST(){
+        return this.isBST(this.root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    }
+    private boolean isBST(Node node, int min, int max){
+        if(node==null){
+            return true;
+        }if(node.data<min || node.data>max){
+            return false;
+        }else if(!this.isBST(node.left,min,node.data)){
+            return false;
+        }else if(!this.isBST(node.right,node.data,max)){
+            return false;
+        }
+        return true;
+    }
 }
