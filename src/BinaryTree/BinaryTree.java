@@ -179,4 +179,32 @@ public class BinaryTree {
         }
         return list;
     }
+
+    public int diameterOFBT(){
+        return this.diameterOFBT(this.root);
+    }
+    private int diameterOFBT(Node node){
+        if(node==null){
+            return 0;
+        }
+        int case1 = this.height(node.left)+this.height(node.right)+2;//when diameter pass through root
+        int case2 = this.diameterOFBT(node.left);//when diameter pass through left child
+        int case3 = this.diameterOFBT(node.right);//when diameter pass through right child
+        return Math.max(case1,Math.max(case2,case3));
+    }
+
+    public int sumofLeafNodes(){
+        return this.sumofLeafNodes(this.root);
+    }
+    private int sumofLeafNodes(Node node){
+        if(node==null){
+            return 0;
+        }
+        if(node.left==null && node.right==null){
+            return node.data;
+        }
+        int left = this.sumofLeafNodes(node.left);
+        int right = this.sumofLeafNodes(node.right);
+        return left+right;
+    }
 }

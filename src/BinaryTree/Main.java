@@ -11,5 +11,7 @@ public class Main {
         tree.levelOrder();
         System.out.println(tree.isBST());
 //        tree.inOrderTraversal(tree.root);
+        System.out.println(tree.diameterOFBT());
+        System.out.println(tree.sumofLeafNodes());
     }
 }
