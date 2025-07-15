@@ -24,4 +24,29 @@ public class BST {
     node.right = construct(arr,mid+1,hi);
     return node;
     }
+
+    public void display(){
+        this.display(this.root);
+    }
+
+    private void display(Node node){
+        if(node==null){
+            return;
+        }
+        String str = "";
+        if(node.left==null){
+            str = str + "END";
+        }else{
+            str = str + node.left.data;
+        }
+        str = str +" => "+ node.data + " <= ";
+        if(node.right==null){
+            str = str + "END";
+        }else{
+            str = str + node.right.data;
+        }
+        System.out.println(str);
+        display(node.left);
+        display(node.right);
+    }
 }
