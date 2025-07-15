@@ -65,4 +65,25 @@ public class BST {
         }
         return find(node.right,key);
     }
+
+    public void add(int key){
+        add(this.root,key);
+    }
+    private void add(Node node,int key){
+        if(key>node.data){
+            if(node.right==null){
+                node.right = new Node();
+                node.right.data = key;
+            }else{
+                add(node.right,key);
+            }
+        }else{
+            if(node.left==null){
+                node.left = new Node();
+                node.left.data = key;
+            }else{
+                add(node.left,key);
+            }
+        }
+    }
 }

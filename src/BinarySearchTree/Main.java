@@ -7,5 +7,7 @@ public class Main {
         BST bst = new BST(arr);
         bst.display();
         System.out.println(bst.find(44));
+        bst.add(44);
+        System.out.println(bst.find(44));
     }
 }
