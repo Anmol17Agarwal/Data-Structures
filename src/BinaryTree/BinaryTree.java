@@ -1,8 +1,6 @@
 package BinaryTree;
 
-import java.util.LinkedList;
-
-import java.util.Scanner;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -157,5 +155,28 @@ public class BinaryTree {
             return false;
         }
         return true;
+    }
+
+    public List<Integer> inOrderTraversal(Node node) {
+        if (node == null) {
+            List<Integer> list = new ArrayList<>();
+            return list;
+        }
+        Stack<Node> stack = new Stack<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        while(true){
+            if(node!=null){
+                stack.push(node);
+                node = node.left;
+            }else{
+                if(stack.isEmpty()){
+                    break;
+                }
+                node = stack.pop();
+                list.add(node.data);
+                node = node.right;
+            }
+        }
+        return list;
     }
 }

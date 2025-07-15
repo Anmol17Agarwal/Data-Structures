@@ -10,5 +10,6 @@ public class Main {
         tree.inOrder();
         tree.levelOrder();
         System.out.println(tree.isBST());
+//        tree.inOrderTraversal(tree.root);
     }
 }
