@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import java.util.ArrayList;
+
 public class BST {
 
     private class Node{
@@ -94,6 +96,34 @@ public class BST {
         if(node.right==null){
             return node.data;
         }
+
         return max(node.right);
+    }
+
+    public ArrayList<Integer> convertTreeToArray(){
+        ArrayList<Integer> list = new ArrayList<>();
+        this.convertTreeToArray(this.root,list);
+        return list;
+    }
+    private void convertTreeToArray(Node node,ArrayList<Integer> list){
+            if((node==null)){
+                return;
+            }
+            if(node.left==null && node.right==null){
+                return;
+            }
+        if(node.left!=null){
+            list.add(node.data);
+            list.add(node.left.data);
+        }else {
+            list.add(null);
+        }
+        if(node.right!=null){
+            list.add(node.right.data);
+        }else {
+            list.add(null);
+        }
+        convertTreeToArray(node.left,list);
+        convertTreeToArray(node.right,list);
     }
 }
