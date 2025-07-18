@@ -14,5 +14,9 @@ public class Main {
         heap.add(5);
         heap.display();
 
+        System.out.println(heap.delete());
+        heap.display();
+        System.out.println(heap.delete());
+        heap.display();
     }
 }
