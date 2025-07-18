@@ -1,0 +1,39 @@
+package Heap;
+
+import java.util.ArrayList;
+
+
+public class Heap {
+
+    ArrayList<Integer> arr = new ArrayList<>();
+
+    public void add(int data){
+        arr.add(data);
+        upheapify(arr.size()-1);
+    }
+
+    private void upheapify(int ci) {
+        int pi = (ci-1)/2;
+        if(arr.get(ci)<arr.get(pi)){
+            swap(pi,ci);
+        }
+    }
+
+    private void swap(int i, int j) {
+        int ithValue = arr.get(i);
+        int jthValue = arr.get(j);
+        arr.set(i,jthValue);
+        arr.set(j,ithValue);
+    }
+
+    private int size(){
+        return this.arr.size();
+    }
+
+    public boolean isEmpty(){
+        return size()==0;
+    }
+    public void display(){
+        System.out.println(arr);
+    }
+}
