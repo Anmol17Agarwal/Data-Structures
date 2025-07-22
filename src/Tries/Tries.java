@@ -66,5 +66,52 @@ public class Tries {
             this.display(entry.getValue(), str + node.data);
         }
     }
+    public boolean search(String word){
+        return this.search(this.root, word);
+    }
 
+    private boolean search(Node parent, String word){
+        if(word.length() == 0) {
+            if (parent.isTerminal) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        char cc = word.charAt(0);
+        String ros = word.substring(1);
+        Node child = parent.children.get(cc);
+        if(child == null){
+            return false;
+        }else{
+        return this.search(child, ros);
+        }
+    }
+
+    public void delete(String word){
+        this.delete(this.root, word);
+    }
+    private void delete(Node parent, String word){
+        if(word.length() == 0){
+            if(parent.isTerminal){
+                parent.isTerminal = false;
+                this.numWords--;
+                System.out.println("Deleted");
+            }else{
+            // word is part of another word
+            }
+            return;
+        }
+        char cc = word.charAt(0);
+        String ros = word.substring(1);
+        Node child = parent.children.get(cc);
+        if(child == null){
+            return;
+        }
+        this.delete(child, ros);
+
+        if(!child.isTerminal && child.children.size() == 0){
+            parent.children.remove(cc);
+        }
+    }
 }

@@ -11,5 +11,21 @@ public class Main {
         tries.addWord("seafood");
         tries.addWord("seenBefore");
         tries.display();
+        System.out.println("=======================");
+        System.out.println(tries.search("anmol"));
+
+        System.out.println(tries.search("anmo"));
+        tries.delete("ama");
+        tries.display();
+
+        System.out.println("=======================");
+        tries.delete("sea");
+        tries.display();
+
+        System.out.println("=======================");
+        tries.delete("seafood");
+        tries.display();
+
+        System.out.println("=======================");
     }
 }
