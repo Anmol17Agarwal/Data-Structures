@@ -39,8 +39,8 @@ public class MatrixChainMultiplication {
             if(total<min) {
                 min = total;
             }
-            dp[si][ei] = min;
         }
+        dp[si][ei] = min;
         return min;
     }
 
