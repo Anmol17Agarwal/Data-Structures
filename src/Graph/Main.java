@@ -1,5 +1,7 @@
 package Graph;
 
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph();
@@ -10,6 +12,7 @@ public class Main {
         graph.addVertex("E");
         graph.addVertex("F");
         graph.addVertex("G");
+        graph.addVertex("H");
 
         graph.addEdge("A", "B", 1);
         graph.addEdge("A", "D", 2);
@@ -30,7 +33,7 @@ public class Main {
 
         System.out.println(graph.containsVertex("A"));
 
-        graph.removeEdge("A","B");
+        graph.removeEdge("D","E");
         graph.printGraph();
 
         graph.removeVertex("F");
@@ -42,5 +45,6 @@ public class Main {
         graph.addEdge("F", "E", 1);
         graph.addEdge("F", "G", 1);
         graph.printGraph();
+        System.out.println(graph.hasPath("A","G",new HashMap<>()));
     }
 }

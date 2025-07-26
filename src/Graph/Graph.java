@@ -87,5 +87,22 @@ public class Graph {
 
         System.out.println("======================");
     }
+
+    public boolean hasPath(String vName, String vName2, HashMap<String, Boolean> visited) {
+        Graph g = new Graph();
+        visited.put(vName, true);
+        if(g.containsEdge(vName,vName2)){
+            return true;
+        }
+        Vertex vertex = vertices.get(vName);
+        if (vertex == null) return false;
+        ArrayList<String> keys = new ArrayList<>(vertex.neighbours.keySet());
+        for (String key : keys) {
+            if(!visited.containsKey(key) && g.hasPath(key,vName2,visited)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
