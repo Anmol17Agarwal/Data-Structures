@@ -33,7 +33,7 @@ public class Main {
 
         System.out.println(graph.containsVertex("A"));
 
-        graph.removeEdge("D","E");
+        graph.removeEdge("A","D");
         graph.printGraph();
 
         graph.removeVertex("F");
@@ -46,5 +46,8 @@ public class Main {
         graph.addEdge("F", "G", 1);
         graph.printGraph();
         System.out.println(graph.hasPath("A","G",new HashMap<>()));
+
+        BFS bfs = new BFS();
+        System.out.println(bfs.bfs(graph,"A","G"));
     }
 }
