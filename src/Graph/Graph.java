@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Graph {
 
-    private class Vertex {
+    public class Vertex {
         HashMap<String, Integer> neighbours= new HashMap<>();
     }
 
