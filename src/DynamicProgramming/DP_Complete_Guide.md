@@ -8,7 +8,12 @@
 2. [Fibonacci Numbers](#fibonacci-numbers) 
 3. [Count Board Problem](#count-board-problem)
 4. [Count Maze Path](#count-maze-path)
-5. [Comparison & When to Use Each Approach](#comparison--when-to-use-each-approach)
+5. [Edit Distance Problem](#edit-distance-problem)
+6. [0/1 Knapsack Problem](#01-knapsack-problem)
+7. [Matrix Chain Multiplication](#matrix-chain-multiplication)
+8. [Wine Problem](#wine-problem)
+9. [Mixture Problem](#mixture-problem)
+10. [Comparison & When to Use Each Approach](#comparison--when-to-use-each-approach)
 
 ---
 
@@ -342,6 +347,334 @@ dp[1] = dp[1] + dp[2] = 2 + 1 = 3
 dp[0] = dp[0] + dp[1] = 3 + 3 = 6
 Result: dp = [6, 3, 1]
 ```
+
+---
+
+# 5️⃣ Edit Distance Problem
+
+## 🎯 Problem: 
+Find the minimum number of operations (insert, delete, replace) required to transform one string into another.
+
+**Example**: Transform "saturday" → "sunday"
+- Replace 'a' with 'u': "sturday"
+- Replace 't' with 'n': "sunrday" 
+- Delete 'r': "sunday"
+**Result**: 3 operations
+
+## 🔄 Approach 1: Pure Recursion
+
+### Algorithm:
+```
+editDistance(str1, str2):
+    if str1 is empty: return length of str2
+    if str2 is empty: return length of str1
+    
+    if first characters match:
+        return editDistance(rest of str1, rest of str2)
+    else:
+        insert = editDistance(str1, rest of str2) + 1
+        delete = editDistance(rest of str1, str2) + 1  
+        replace = editDistance(rest of str1, rest of str2) + 1
+        return minimum of (insert, delete, replace)
+```
+
+### 📊 Visual Example ("cat" → "dog"):
+```
+                editDistance("cat", "dog")
+                         /      |        \
+                      +1/    +1 |         \+1
+                      /         |          \
+            ("at","dog")  ("cat","og")  ("at","og")
+               /   |   \      /   |   \     /   |   \
+             ...  ...  ...  ...  ...  ... ...  ... ...
+```
+
+**Time Complexity**: O(3^(m+n)) - Exponential  
+**Space Complexity**: O(m+n) - Recursion stack
+
+## ⚡ Approach 2: Top-Down DP (Memoization)
+
+### Algorithm:
+```
+editDistanceDP(str1, str2, i, j, dp):
+    if i == str1.length: return str2.length - j
+    if j == str2.length: return str1.length - i
+    
+    if dp[i][j] != 0: return dp[i][j]
+    
+    if str1[i] == str2[j]:
+        dp[i][j] = editDistanceDP(str1, str2, i+1, j+1, dp)
+    else:
+        insert = editDistanceDP(str1, str2, i, j+1, dp) + 1
+        delete = editDistanceDP(str1, str2, i+1, j, dp) + 1
+        replace = editDistanceDP(str1, str2, i+1, j+1, dp) + 1
+        dp[i][j] = min(insert, delete, replace)
+    
+    return dp[i][j]
+```
+
+**Time Complexity**: O(m×n)  
+**Space Complexity**: O(m×n)
+
+## 🏗️ Approach 3: Bottom-Up DP
+
+### Algorithm:
+```
+editDistanceBU(str1, str2):
+    dp[i][j] = min edit distance for first i chars of str1 to first j chars of str2
+    
+    Base cases:
+    dp[0][j] = j (insert j characters)
+    dp[i][0] = i (delete i characters)
+    
+    For each cell:
+    if str1[i-1] == str2[j-1]:
+        dp[i][j] = dp[i-1][j-1]
+    else:
+        dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
+```
+
+### 📊 DP Table Example ("cat" → "dog"):
+```
+    ""  d  o  g
+""   0  1  2  3
+c    1  1  2  3
+a    2  2  2  3  
+t    3  3  3  3
+```
+
+**Time Complexity**: O(m×n)  
+**Space Complexity**: O(m×n)
+
+---
+
+# 6️⃣ 0/1 Knapsack Problem
+
+## 🎯 Problem: 
+Given weights and values of items, find maximum value that can be obtained with weight limit W.
+
+**Example**: 
+- Items: [(weight=1, value=1), (weight=3, value=4), (weight=4, value=5), (weight=5, value=7)]
+- Capacity: 7
+- **Result**: Maximum value = 9 (items with weights 3+4)
+
+## 🔄 Approach 1: Pure Recursion  
+
+### Algorithm:
+```
+knapsack(weights, values, index, capacity):
+    if index == n or capacity == 0:
+        return 0
+    
+    exclude = knapsack(weights, values, index+1, capacity)
+    
+    include = 0
+    if weights[index] <= capacity:
+        include = values[index] + knapsack(weights, values, index+1, capacity - weights[index])
+    
+    return max(include, exclude)
+```
+
+### 📊 Visual Decision Tree:
+```
+                    knapsack(items, 0, 7)
+                   /                    \
+              exclude                 include (w=1,v=1)
+           knapsack(1,7)              knapsack(1,6)
+            /        \                 /           \
+        exclude    include         exclude      include
+      knapsack(2,7) knapsack(2,4) knapsack(2,6) knapsack(2,3)
+         ...          ...            ...          ...
+```
+
+**Time Complexity**: O(2^n) - Exponential  
+**Space Complexity**: O(n) - Recursion depth
+
+## ⚡ Approach 2: Top-Down DP (Memoization)
+
+### Algorithm:
+```
+knapsackDP(weights, values, index, capacity, dp):
+    if index == n or capacity == 0:
+        return 0
+        
+    if dp[index][capacity] != 0:
+        return dp[index][capacity]
+    
+    exclude = knapsackDP(weights, values, index+1, capacity, dp)
+    
+    include = 0
+    if weights[index] <= capacity:
+        include = values[index] + knapsackDP(weights, values, index+1, capacity - weights[index], dp)
+    
+    dp[index][capacity] = max(include, exclude)
+    return dp[index][capacity]
+```
+
+**Time Complexity**: O(n×W)  
+**Space Complexity**: O(n×W)
+
+## 🏗️ Approach 3: Bottom-Up DP
+
+### Algorithm:
+```
+knapsackBU(weights, values, capacity):
+    dp[i][w] = maximum value using first i items with weight limit w
+    
+    For i from 0 to n:
+        For w from 0 to capacity:
+            if weights[i-1] <= w:
+                dp[i][w] = max(dp[i-1][w], dp[i-1][w-weights[i-1]] + values[i-1])
+            else:
+                dp[i][w] = dp[i-1][w]
+```
+
+### 📊 DP Table Example:
+```
+Capacity:  0  1  2  3  4  5  6  7
+Item 0:    0  1  1  1  1  1  1  1  (w=1,v=1)
+Item 1:    0  1  1  4  5  5  5  5  (w=3,v=4)  
+Item 2:    0  1  1  4  5  6  6  9  (w=4,v=5)
+Item 3:    0  1  1  4  5  7  8  9  (w=5,v=7)
+```
+
+**Time Complexity**: O(n×W)  
+**Space Complexity**: O(n×W)
+
+---
+
+# 7️⃣ Matrix Chain Multiplication
+
+## 🎯 Problem: 
+Find the minimum number of scalar multiplications needed to compute the product of a chain of matrices.
+
+**Example**: 
+- Matrices: A₁(4×2) × A₂(2×3) × A₃(3×5) × A₄(5×1)
+- Different parenthesizations have different costs
+- **Goal**: Find optimal parenthesization
+
+## 🔄 Approach 1: Pure Recursion
+
+### Algorithm:
+```
+matrixChainMultiplication(arr, start, end):
+    if start + 1 == end:
+        return 0  // Single matrix, no multiplication needed
+    
+    min_cost = INFINITY
+    for k from start+1 to end-1:
+        left_cost = matrixChainMultiplication(arr, start, k)
+        right_cost = matrixChainMultiplication(arr, k, end)
+        split_cost = arr[start] * arr[k] * arr[end]
+        
+        total_cost = left_cost + right_cost + split_cost
+        min_cost = min(min_cost, total_cost)
+    
+    return min_cost
+```
+
+### 📊 Visual Example (matrices 4×2, 2×3, 3×5, 5×1):
+```
+Array: [4, 2, 3, 5, 1]
+       A₁   A₂   A₃   A₄
+
+                MCM(0,4)
+               /    |    \
+           k=1/   k=2|     \k=3
+            /       |      \
+      MCM(0,1)   MCM(0,2)   MCM(0,3)
+      +MCM(1,4)  +MCM(2,4)  +MCM(3,4)
+      +4×2×1     +4×3×1     +4×5×1
+```
+
+**Time Complexity**: O(2^n) - Exponential  
+**Space Complexity**: O(n) - Recursion depth
+
+## ⚡ Approach 2: Top-Down DP (Memoization)
+
+### Algorithm:
+```
+matrixChainMultiplicationDP(arr, start, end, dp):
+    if start + 1 == end:
+        return 0
+        
+    if dp[start][end] != 0:
+        return dp[start][end]
+    
+    min_cost = INFINITY
+    for k from start+1 to end-1:
+        left_cost = matrixChainMultiplicationDP(arr, start, k, dp)
+        right_cost = matrixChainMultiplicationDP(arr, k, end, dp)
+        split_cost = arr[start] * arr[k] * arr[end]
+        
+        total_cost = left_cost + right_cost + split_cost
+        min_cost = min(min_cost, total_cost)
+    
+    dp[start][end] = min_cost
+    return min_cost
+```
+
+### 📊 DP Table Example:
+```
+     0   1   2   3   4
+0    0   0  24  88  158
+1    -   0   0  30  48  
+2    -   -   0   0  15
+3    -   -   -   0   0
+4    -   -   -   -   0
+```
+
+**Time Complexity**: O(n³)  
+**Space Complexity**: O(n²)
+
+---
+
+# 8️⃣ Wine Problem
+
+## 🎯 Problem: 
+Given wines with different values, find the maximum profit by selling them optimally over time (wine value increases each year).
+
+**Example**: 
+- Wines: [2, 3, 5, 1, 4]
+- Year 1: Can sell wine worth 2×1 = 2
+- Year 2: Can sell wine worth 3×2 = 6, etc.
+- **Goal**: Maximize total profit
+
+## Algorithm Concept:
+```
+At each step, choose to sell either:
+- First wine: value[left] × year + solve(left+1, right, year+1)  
+- Last wine: value[right] × year + solve(left, right-1, year+1)
+
+Return maximum of both choices
+```
+
+**Time Complexity**: O(n²) with DP  
+**Space Complexity**: O(n²)
+
+---
+
+# 9️⃣ Mixture Problem
+
+## 🎯 Problem: 
+Given colored substances with different properties, find the minimum cost to mix them optimally.
+
+**Example**: 
+- Substances with different mixing costs
+- **Goal**: Find optimal mixing sequence
+
+## Algorithm Concept:
+```
+Similar to Matrix Chain Multiplication:
+- Try all possible split points
+- Calculate mixing cost for each split
+- Choose minimum cost option
+```
+
+**Time Complexity**: O(n³) with DP  
+**Space Complexity**: O(n²)
+
+{{ ... }}
 
 ---
 
