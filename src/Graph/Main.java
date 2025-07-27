@@ -48,6 +48,8 @@ public class Main {
         System.out.println(graph.hasPath("A","G",new HashMap<>()));
 
         BFS bfs = new BFS();
-        System.out.println(bfs.bfs(graph,"A","G"));
+        DFS dfs = new DFS();
+//        System.out.println(bfs.bfs(graph,"A","G"));
+        System.out.println(dfs.dfs(graph,"A","G"));
     }
 }
