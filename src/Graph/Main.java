@@ -60,5 +60,7 @@ public class Main {
 //        System.out.println(isCyclic.isCyclic(graph));
         IsConnected isConnected = new IsConnected();
         System.out.println(isConnected.isConnected(graph));
+        IsTree isTree = new IsTree();
+        System.out.println(isTree.isTree(graph));
     }
 }
