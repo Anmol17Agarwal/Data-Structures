@@ -52,9 +52,11 @@ public class Main {
         DFS dfs = new DFS();
 //        System.out.println(bfs.bfs(graph,"A","G"));
 //        System.out.println(dfs.dfs(graph,"A","G"));
-        BFT bft = new BFT();
-        bft.bft(graph);
-        DFT dft = new DFT();
-        dft.dft(graph);
+//        BFT bft = new BFT();
+//        bft.bft(graph);
+//        DFT dft = new DFT();
+//        dft.dft(graph);
+        IsCyclic isCyclic = new IsCyclic();
+        System.out.println(isCyclic.isCyclic(graph));
     }
 }
