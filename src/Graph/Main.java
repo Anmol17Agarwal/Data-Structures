@@ -1,5 +1,7 @@
 package Graph;
 
+import BinarySearchTree.BST;
+
 import java.util.HashMap;
 
 public class Main {
@@ -12,7 +14,6 @@ public class Main {
         graph.addVertex("E");
         graph.addVertex("F");
         graph.addVertex("G");
-        graph.addVertex("H");
 
         graph.addEdge("A", "B", 1);
         graph.addEdge("A", "D", 2);
@@ -25,31 +26,33 @@ public class Main {
 
         graph.printGraph();
 
-        System.out.println(graph.getVertexCount());
-        System.out.println(graph.getEdgeCount());
+//        System.out.println(graph.getVertexCount());
+//        System.out.println(graph.getEdgeCount());
+//
+//        System.out.println(graph.containsEdge("A","B"));
+//        System.out.println(graph.containsEdge("A","C"));
+//
+//        System.out.println(graph.containsVertex("A"));
+//
+//        graph.removeEdge("A","D");
+//        graph.printGraph();
+//
+//        graph.removeVertex("F");
+//        graph.printGraph();
+//
+//        graph.addVertex("F");
+//        graph.printGraph();
 
-        System.out.println(graph.containsEdge("A","B"));
-        System.out.println(graph.containsEdge("A","C"));
-
-        System.out.println(graph.containsVertex("A"));
-
-        graph.removeEdge("A","D");
-        graph.printGraph();
-
-        graph.removeVertex("F");
-        graph.printGraph();
-
-        graph.addVertex("F");
-        graph.printGraph();
-
-        graph.addEdge("F", "E", 1);
-        graph.addEdge("F", "G", 1);
-        graph.printGraph();
-        System.out.println(graph.hasPath("A","G",new HashMap<>()));
+//        graph.addEdge("F", "E", 1);
+//        graph.addEdge("F", "G", 1);
+//        graph.printGraph();
+//        System.out.println(graph.hasPath("A","G",new HashMap<>()));
 
         BFS bfs = new BFS();
         DFS dfs = new DFS();
 //        System.out.println(bfs.bfs(graph,"A","G"));
-        System.out.println(dfs.dfs(graph,"A","G"));
+//        System.out.println(dfs.dfs(graph,"A","G"));
+        BFT bft = new BFT();
+        bft.bft(graph);
     }
 }
