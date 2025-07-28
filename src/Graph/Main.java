@@ -56,7 +56,9 @@ public class Main {
 //        bft.bft(graph);
 //        DFT dft = new DFT();
 //        dft.dft(graph);
-        IsCyclic isCyclic = new IsCyclic();
-        System.out.println(isCyclic.isCyclic(graph));
+//        IsCyclic isCyclic = new IsCyclic();
+//        System.out.println(isCyclic.isCyclic(graph));
+        IsConnected isConnected = new IsConnected();
+        System.out.println(isConnected.isConnected(graph));
     }
 }
