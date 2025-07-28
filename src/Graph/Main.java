@@ -54,5 +54,7 @@ public class Main {
 //        System.out.println(dfs.dfs(graph,"A","G"));
         BFT bft = new BFT();
         bft.bft(graph);
+        DFT dft = new DFT();
+        dft.dft(graph);
     }
 }
