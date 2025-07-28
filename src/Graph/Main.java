@@ -52,15 +52,25 @@ public class Main {
         DFS dfs = new DFS();
 //        System.out.println(bfs.bfs(graph,"A","G"));
 //        System.out.println(dfs.dfs(graph,"A","G"));
+//
 //        BFT bft = new BFT();
 //        bft.bft(graph);
+//
 //        DFT dft = new DFT();
 //        dft.dft(graph);
+//
 //        IsCyclic isCyclic = new IsCyclic();
 //        System.out.println(isCyclic.isCyclic(graph));
-        IsConnected isConnected = new IsConnected();
-        System.out.println(isConnected.isConnected(graph));
-        IsTree isTree = new IsTree();
-        System.out.println(isTree.isTree(graph));
+//
+//        IsConnected isConnected = new IsConnected();
+//        System.out.println(isConnected.isConnected(graph));
+//
+//        IsTree isTree = new IsTree();
+//        System.out.println(isTree.isTree(graph));
+
+        IsConnectedComponents isConnectedComponents = new IsConnectedComponents();
+        graph.removeEdge("D","E");
+        graph.addVertex("H");
+        System.out.println(isConnectedComponents.isConnectedComponents(graph));
     }
 }
