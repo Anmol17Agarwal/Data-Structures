@@ -7,11 +7,19 @@ public class BitManipulation {
         }else{
             System.out.println("kth bit is 0");
         }
+        System.out.println(setKthBit(22,1));
     }
     public static int extractKthBit(int n, int k) {
-        int j=1;
-        j=j<<(k-1);
-        int res=n&j;
+        int mask=1;
+        mask=mask<<(k-1);
+        int res=n&mask;
+        return res;
+    }
+
+    public static int setKthBit(int n, int k) {
+        int mask=1;
+        mask=mask<<(k-1);
+        int res=n|mask;
         return res;
     }
 }
