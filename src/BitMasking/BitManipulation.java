@@ -1,5 +1,7 @@
 package BitMasking;
 
+import java.util.ArrayList;
+
 public class BitManipulation {
     public static void main(String[] args) {
         if((extractKthBit(22,5)!=0)){
@@ -14,6 +16,7 @@ public class BitManipulation {
         for(int i=0;i<32;i++){
             System.out.print(magicNumber(i)+" ");
         }
+        missingNumber(new int[]{2,3,5,6},6);
 
     }
     public static int extractKthBit(int n, int k) {
@@ -89,6 +92,42 @@ public class BitManipulation {
 
     // Question: find the number is power of 2 or not
     public static boolean isPowerOf2(int n) {
+        if(n==0) {
+            return false;
+        }
         return (n & (n-1)) == 0;
+    }
+
+    //Question : Find missing two number from an array
+    public static void missingNumber(int[] numbers, int n){
+        int z = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            z = z ^ numbers[i];
+        }
+        for(int i =1;i<=n;i++){
+            z = z ^ i;
+        }
+//        System.out.println(z);
+        int setBit = z & ~(z-1);
+        System.out.println(setBit);
+
+        int group1=0;int group2=0;
+
+        for (int i = 0; i < numbers.length ; i++) {
+            if((numbers[i]&setBit)==setBit){
+                group1 = group1^numbers[i];
+            }else{
+                group2 = group2^numbers[i];
+            }
+        }
+        for (int i = 1; i <=n ; i++) {
+            if ((i & setBit) == setBit) {
+                group1 = group1 ^ i;
+            } else {
+                group2 = group2 ^ i;
+            }
+        }
+        System.out.println("First Missing Number is "+group1);
+        System.out.println("First Missing Number is "+group2);
     }
 }
