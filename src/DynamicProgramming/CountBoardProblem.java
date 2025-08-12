@@ -2,8 +2,8 @@ package DynamicProgramming;
 
 public class CountBoardProblem {
     public static void main(String[] args) {
-        int n=10000;
-//        System.out.println(countBoardPathRecursive(0,n));
+        int n=10;
+        System.out.println(countBoardPathRecursive(0,n));
      //   System.out.println(countBoardPathTD(0,n,new int[n]));
         System.out.println(countBoardPathBU(n));
         System.out.println(countBoardPathBUSE(n));

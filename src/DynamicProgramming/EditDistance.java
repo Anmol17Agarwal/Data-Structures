@@ -5,9 +5,9 @@ public class EditDistance {
         String word1 = "saturday";
         String word2 = "sunday";
         System.out.println(minDistanceRecursive(word1, word2));
-        System.out.println(minDistanceVirtualIndex(word1,word2,0,0));
-        System.out.println(minDistanceVirtualIndexTB(word1,word2,0,0,new int[word1.length()][word2.length()]));
-        System.out.println(minDistanceBU(word1,word2));
+//        System.out.println(minDistanceVirtualIndex(word1,word2,0,0));
+//        System.out.println(minDistanceVirtualIndexTB(word1,word2,0,0,new int[word1.length()][word2.length()]));
+//        System.out.println(minDistanceBU(word1,word2));
     }
     public static int minDistanceRecursive(String word1, String word2) {
         if(word1.length() == 0 || word2.length() == 0) {
