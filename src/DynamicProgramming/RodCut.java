@@ -4,6 +4,7 @@ public class RodCut {
     public static void main(String[] args) {
     int[] price = {0,1,5,8,9,10,17,17,20};
         System.out.println(rodCutRecursion(price, price.length-1));
+        System.out.println(rodCutTD(price, price.length-1,new int[price.length] ));
     }
     public static int rodCutRecursion(int[] price,int n){
         int max = price[n];
@@ -47,4 +48,5 @@ public class RodCut {
         strg[n] = max;
         return max;
     }
+
 }
