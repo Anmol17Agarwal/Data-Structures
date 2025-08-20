@@ -24,5 +24,27 @@ public class RodCut {
         }
         return max;
     }
+    public static int rodCutTD(int[] price,int n, int[]strg){
+        if(strg[n]!=0){
+            return strg[n];
+        }
+        int max = price[n];
+        int left = 1;
+        int right = n-1;
+        while(left<=right){
 
+            int fp = rodCutRecursion(price,left);
+            int sp = rodCutRecursion(price,right);
+            int total = fp+sp;
+
+            if(max<total){
+                max=total;
+            }
+
+            left++;
+            right--;
+        }
+        strg[n] = max;
+        return max;
+    }
 }
