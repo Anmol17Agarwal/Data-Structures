@@ -1,6 +1,8 @@
 package BitMasking;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 public class BitManipulation {
     public static void main(String[] args) {
@@ -18,6 +20,15 @@ public class BitManipulation {
         }
         missingNumber(new int[]{2,3,5,6},6);
 
+        HashSet<Integer> set = new HashSet<>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        set.add(5);
+        set.add(4);
+        set.add(5);
+        System.out.println(set.size()+""+set.toString());
     }
     public static int extractKthBit(int n, int k) {
         int mask=1;
@@ -130,4 +141,5 @@ public class BitManipulation {
         System.out.println("First Missing Number is "+group1);
         System.out.println("First Missing Number is "+group2);
     }
+
 }
