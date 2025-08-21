@@ -2,8 +2,8 @@ package DynamicProgramming;
 
 public class WildCardMatching {
     public static void main(String[] args) {
-    String src = "aaabbabababbbaab";
-    String pattern = "aaa*******baab";
+    String src = "aa";
+    String pattern = "a";
         System.out.println(wildCardMatchingRecursive(src,pattern));
         System.out.println(wildCardMatchingRecursiveTD(src,pattern,0,0));
     }
