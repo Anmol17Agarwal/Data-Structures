@@ -11,10 +11,11 @@ public class BitManipulation {
         }else{
             System.out.println("kth bit is 0");
         }
-        System.out.println(setKthBit(22,1));
-        System.out.println(resetBit(23,3));
-        System.out.println(rightMostSetBit(6));
+//        System.out.println(setKthBit(22,1));
+//        System.out.println(resetBit(23,3));
+//        System.out.println(rightMostSetBit(6));
         System.out.println(addOne(6));
+        System.out.println("++++++++++++++++++++++++++");
         for(int i=0;i<32;i++){
             System.out.print(magicNumber(i)+" ");
         }
