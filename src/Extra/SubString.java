@@ -4,7 +4,7 @@ public class SubString {
     public static void main(String[] args) {
         String str1 = "testifgisgun";
         String str2 = "fun";
-        System.out.println(match(str1,str2,0));
+        System.out.println(match(str1,str2));
     }
     public static boolean match(String str1,String str2){
         if(str1.length()==0 && str2.length()==0){
