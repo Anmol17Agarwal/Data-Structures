@@ -34,5 +34,5 @@ public class ProblemSwapPairs {
 
         return secondNode;
     }
-
 }
+
