@@ -5,8 +5,8 @@ public class CountBoardProblem {
         int n=10;
         System.out.println(countBoardPathRecursive(0,n));
      //   System.out.println(countBoardPathTD(0,n,new int[n]));
-        System.out.println(countBoardPathBU(n));
-        System.out.println(countBoardPathBUSE(n));
+//        System.out.println(countBoardPathBU(n));
+//        System.out.println(countBoardPathBUSE(n));
     }
 
     //Time : o(6^n) Space : o(n)
