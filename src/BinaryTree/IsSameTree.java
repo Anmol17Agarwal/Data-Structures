@@ -2,7 +2,6 @@ package BinaryTree;
 
 //LeetCode question no 100
 public class IsSameTree {
-
     public class TreeNode {
         int val;
         TreeNode left;
