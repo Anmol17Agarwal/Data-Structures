@@ -58,21 +58,24 @@ public class BinaryTree {
         this.display(this.root);
     }
     public void display(Node node){
+        if(node==null){
+            return;
+        }
         String str = "";
         if(node.left!=null){
-            str = str + node.left.data + "=>";
+            str = str + node.left.data;
         }else{
-            str = str + "=> END";
+            str = str + "END";
         }
-
-        str = str + node.data;
-
+        str = str +" => "+ node.data + " <= ";
         if(node.right!=null){
-            str = str +"<="+ node.right.data;
+            str = str + node.right.data;
         }else{
-            str = str + "<= END";
+            str = str + "END";
         }
         System.out.println(str);
+        display(node.left);
+        display(node.right);
     }
 
     public int height(){

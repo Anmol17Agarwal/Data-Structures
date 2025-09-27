@@ -6,8 +6,11 @@ public class Main {
         tree.display();
         System.out.println("Height of tree is "+tree.height());
         tree.preOrder();
+        System.out.println();
         tree.postOrder();
+        System.out.println();
         tree.inOrder();
+        System.out.println();
         tree.levelOrder();
         System.out.println(tree.isBST());
 //        tree.inOrderTraversal(tree.root);
