@@ -5,9 +5,23 @@ import java.util.List;
 
 //LeetCode question number 145
 public class PostOrderTraversal {
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int val) {
+            this.val = val;
+        }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
     List<Integer> list = new ArrayList<>();
 
-    public List<Integer> postorderTraversal(BinaryTree.IsSameTree.TreeNode root) {
+    public List<Integer> postorderTraversal(TreeNode root) {
         if (root == null) {
             return list;
         }

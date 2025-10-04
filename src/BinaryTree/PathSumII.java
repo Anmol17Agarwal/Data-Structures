@@ -5,13 +5,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PathSumII {
-    public List<List<Integer>> pathSum(BinaryTree.IsSameTree.TreeNode root, int targetSum){
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int val) {
+            this.val = val;
+        }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum){
             List<List<Integer>> ll = new ArrayList<>();
             List<Integer> pathS = new ArrayList<>();
             helper(root,targetSum,ll,pathS);
             return ll;
         }
-        public void helper(BinaryTree.IsSameTree.TreeNode root, int targetSum, List<List<Integer>> ll, List<Integer> pathS ) {
+        public void helper(TreeNode root, int targetSum, List<List<Integer>> ll, List<Integer> pathS ) {
             if (root == null) {
                 return;
             }

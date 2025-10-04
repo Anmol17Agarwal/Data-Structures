@@ -2,12 +2,26 @@ package BinaryTree;
 
 //LeetCode question number 226
 public class InvertTree {
-    public BinaryTree.IsSameTree.TreeNode invertTree(BinaryTree.IsSameTree.TreeNode root) {
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int val) {
+            this.val = val;
+        }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+    public TreeNode invertTree(TreeNode root) {
         if (root == null) {
             return null;
         }
-        BinaryTree.IsSameTree.TreeNode left = invertTree(root.left);
-        BinaryTree.IsSameTree.TreeNode right = invertTree(root.right);
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
         root.left = right;
         root.right = left;
         return root;
